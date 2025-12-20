@@ -224,7 +224,7 @@ This is the first public release of Structura, bringing professional-grade code 
 
 ### Tracking
 
-All issues tracked at: https://github.com/qaisarrafique107-cell/structura-vscode/issues
+All issues tracked at: https://github.com/byqaisar1/structura-vscode/issues
 
 ---
 
@@ -232,7 +232,7 @@ All issues tracked at: https://github.com/qaisarrafique107-cell/structura-vscode
 
 ### v1.0.0
 
-- **Qasim Rafique** - Lead developer, architecture, implementation
+- **By Qaisar** - Lead developer, architecture, implementation
 
 ### Special Thanks
 
@@ -244,10 +244,10 @@ All issues tracked at: https://github.com/qaisarrafique107-cell/structura-vscode
 
 ## Links
 
-- **GitHub Repository:** https://github.com/qaisarrafique107-cell/structura-vscode/
+- **GitHub Repository:** https://github.com/byqaisar1/structura-vscode/
 - **VS Code Marketplace:** https://marketplace.visualstudio.com/items?itemName=structura-dev.structura-code-reorder
-- **Issue Tracker:** https://github.com/qaisarrafique107-cell/structura-vscode/issues
-- **Documentation:** README.md
+- **Issue Tracker:** https://github.com/byqaisar1/structura-vscode/issues
+- **Documentation:** [README.md](https://github.com/byqaisar1/structura-vscode/blob/main/README.md)
 
 ---
 

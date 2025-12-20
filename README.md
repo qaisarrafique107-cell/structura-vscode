@@ -9,9 +9,9 @@
 Drag and drop functions across files. Automatic imports. Multi-file refactoring made simple.
 
 [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue?style=flat-square&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=structura-dev.structura-code-reorder)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)](https://github.com/qaisarrafique107-cell/structura-vscode/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://github.com/qaisarrafique107-cell/structura-vscode/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.0-orange?style=flat-square)](https://github.com/qaisarrafique107-cell/structura-vscode/blob/main/CHANGELOG.md)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)](https://github.com/byqaisar1/structura-vscode/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://github.com/byqaisar1/structura-vscode/blob/main/LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.0.0-orange?style=flat-square)](https://github.com/byqaisar1/structura-vscode/blob/main/CHANGELOG.md)
 
 </div>
 
@@ -283,11 +283,11 @@ Structura works with any language that has a Symbol Provider in VS Code:
 
 ### Found a Bug?
 
-Open an issue: [GitHub Issues](https://github.com/qaisarrafique107-cell/structura-vscode/issues)
+Open an issue: [GitHub Issues](https://github.com/byqaisar1/structura-vscode/issues)
 
 ### Have a Feature Request?
 
-We'd love to hear it: [Submit Request](https://github.com/qaisarrafique107-cell/structura-vscode/issues)
+We'd love to hear it: [Submit Request](https://github.com/byqaisar1/structura-vscode/issues)
 
 ---
 
@@ -303,15 +303,15 @@ We'd love to hear it: [Submit Request](https://github.com/qaisarrafique107-cell/
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/qaisarrafique107-cell/structura-vscode/blob/main/LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/byqaisar1/structura-vscode/blob/main/LICENSE) file for details.
 
 ---
 
 ## 👨‍💻 Developer
 
-**Created by:** [Qasim Rafique](https://github.com/qaisarrafique107-cell/)
+**Created by:** [By Qaisar](https://github.com/byqaisar1/structura-vscode/)
 
-**Repository:** [https://github.com/qaisarrafique107-cell/structura-vscode/](https://github.com/qaisarrafique107-cell/structura-vscode/)
+**Repository:** [https://github.com/byqaisar1/structura-vscode/](https://github.com/byqaisar1/structura-vscode/)
 
 **Contact:** Open an issue for questions or feedback
 
@@ -332,7 +332,7 @@ Special thanks to:
 
 If Structura saved you time:
 
-⭐ **Star** the [GitHub repository](https://github.com/qaisarrafique107-cell/structura-vscode/)  
+⭐ **Star** the [GitHub repository](https://github.com/byqaisar1/structura-vscode/)  
 📢 **Share** with fellow developers  
 💬 **Leave a review** on VS Code Marketplace  
 
@@ -350,7 +350,6 @@ If Structura saved you time:
 
 **Version 1.0.0** - The Cross-File Refactoring Release
 
-[Report Bug](https://github.com/qaisarrafique107-cell/structura-vscode/issues) · [Request Feature](hhttps://github.com/qaisarrafique107-cell/structura-vscode/issues) · [View Changelog](https://github.com/qaisarrafique107-cell/structura-vscode/blob/main/CHANGELOG.md)
+[Report Bug](https://github.com/byqaisar1/structura-vscode/issues) · [Request Feature](https://github.com/byqaisar1/structura-vscode/issues) · [View Changelog](https://github.com/byqaisar1/structura-vscode/blob/main/CHANGELOG.md)
 
 </div>
-
