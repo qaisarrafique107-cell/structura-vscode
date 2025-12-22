@@ -8,7 +8,7 @@
 
 Drag and drop functions across files. Automatic imports. Multi-file refactoring made simple.
 
-[![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue?style=flat-square&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=structura-dev.structura-code-reorder)
+[![VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ByQaisar.structura-code-reorder&ssr=false#overview)](https://marketplace.visualstudio.com/items?itemName=ByQaisar.structura-code-reorder&ssr=false#overview)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)](https://github.com/byqaisar1/structura-vscode/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://github.com/byqaisar1/structura-vscode/blob/main/LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-orange?style=flat-square)](https://github.com/byqaisar1/structura-vscode/blob/main/CHANGELOG.md)
