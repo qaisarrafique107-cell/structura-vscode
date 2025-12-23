@@ -2,7 +2,7 @@
   "name": "structura-code-reorder",
   "displayName": "Structura - Drag & Drop Code Refactor",
   "description": "Reorder functions and classes by dragging them in the sidebar",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "ByQaisar",
   "engines": {
     "vscode": "^1.74.0"
@@ -12,7 +12,16 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:structuraView"
+    "onView:structuraView",
+    "onCommand:structura.moveFunctionTo",
+    "onCommand:structura.extractToNewFile",
+    "onCommand:structura.duplicateToFile",
+    "onCommand:structura.moveUp",
+    "onCommand:structura.moveDown",
+    "onCommand:structura.moveToTop",
+    "onCommand:structura.moveToBottom",
+    "onCommand:structura.moveToFile",
+    "onCommand:structura.refresh"
   ],
   "main": "./out/extension.js",
   "icon": "images/icon.png",
@@ -44,60 +53,49 @@
     },
     "commands": [
       {
+        "command": "structura.moveFunctionTo",
+        "title": "Move Function to...",
+        "icon": "$(arrow-right)"
+      },
+      {
+        "command": "structura.extractToNewFile",
+        "title": "Extract to New File...",
+        "icon": "$(file-add)"
+      },
+      {
+        "command": "structura.duplicateToFile",
+        "title": "Duplicate to File...",
+        "icon": "$(copy)"
+      },
+      {
         "command": "structura.moveUp",
-        "title": "Structura: Move Function Up",
+        "title": "Move Up",
         "icon": "$(arrow-up)"
       },
       {
         "command": "structura.moveDown",
-        "title": "Structura: Move Function Down",
+        "title": "Move Down",
         "icon": "$(arrow-down)"
       },
       {
         "command": "structura.moveToTop",
-        "title": "Structura: Move to Top",
-        "icon": "$(arrow-small-up)"
+        "title": "Move to Top",
+        "icon": "$(arrow-up)"
       },
       {
         "command": "structura.moveToBottom",
-        "title": "Structura: Move to Bottom",
-        "icon": "$(arrow-small-down)"
+        "title": "Move to Bottom",
+        "icon": "$(arrow-down)"
       },
       {
         "command": "structura.moveToFile",
-        "title": "Structura: Move to Another File",
-        "icon": "$(file-symlink-file)"
+        "title": "Move to File...",
+        "icon": "$(file-move)"
       },
       {
         "command": "structura.refresh",
-        "title": "Structura: Refresh",
+        "title": "Refresh",
         "icon": "$(refresh)"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "structura.moveUp",
-        "key": "ctrl+shift+up",
-        "mac": "cmd+shift+up",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "structura.moveDown",
-        "key": "ctrl+shift+down",
-        "mac": "cmd+shift+down",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "structura.moveToTop",
-        "key": "ctrl+shift+t",
-        "mac": "cmd+shift+t",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "structura.moveToBottom",
-        "key": "ctrl+shift+b",
-        "mac": "cmd+shift+b",
-        "when": "editorTextFocus"
       }
     ],
     "menus": {
@@ -110,14 +108,29 @@
       ],
       "view/item/context": [
         {
+          "command": "structura.moveFunctionTo",
+          "when": "view == structuraView && viewItem == symbol",
+          "group": "inline@1"
+        },
+        {
+          "command": "structura.extractToNewFile",
+          "when": "view == structuraView && viewItem == symbol",
+          "group": "inline@2"
+        },
+        {
+          "command": "structura.duplicateToFile",
+          "when": "view == structuraView && viewItem == symbol",
+          "group": "inline@3"
+        },
+        {
           "command": "structura.moveUp",
           "when": "view == structuraView",
-          "group": "inline@1"
+          "group": "inline@4"
         },
         {
           "command": "structura.moveDown",
           "when": "view == structuraView",
-          "group": "inline@2"
+          "group": "inline@5"
         },
         {
           "command": "structura.moveToFile",
@@ -128,12 +141,19 @@
     }
   },
   "scripts": {
+    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
     "@types/node": "16.x",
-    "typescript": "^4.9.3"
+    "@types/vscode": "^1.74.0",
+    "typescript": "^4.9.3",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "tree-sitter": "^0.21.1",
+    "tree-sitter-typescript": "^0.23.2"
   }
 }

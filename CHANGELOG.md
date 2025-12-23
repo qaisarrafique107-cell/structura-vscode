@@ -4,7 +4,42 @@ All notable changes to the "Structura" extension will be documented in this file
 
 ---
 
-## [1.0.0] - 2025-12-18
+## [1.1.0] - 2025-12-24
+
+### 🚀 Update: Context Menu & Multi-Select
+
+#### ✨ New Features
+
+- **🎯 Context Menu Support** - Right-click on any function for quick actions
+- **🔗 Multi-Select** - Select and move multiple functions at once
+- **⚡ Performance Boost** - Up to 70% faster symbol loading
+- **🔄 Enhanced Drag & Drop** - Smoother cross-file operations
+
+#### 🛠 Technical Improvements
+
+- **Symbol Caching** - Added TTL-based caching for faster symbol loading
+- **Improved Error Handling** - More descriptive error messages
+- **Better TypeScript Support** - Enhanced type checking and inference
+- **Memory Optimization** - Reduced memory usage during large operations
+
+#### 🐛 Bug Fixes
+
+- Fixed import path resolution in Windows environments
+- Resolved symbol duplication issues
+- Improved error recovery during file operations
+- Fixed context menu visibility conditions
+
+#### 📦 Build & Dependencies
+
+- Updated package dependencies
+- Improved build process
+- Added proper TypeScript configuration
+- Enhanced development tooling
+
+---
+
+## [1.0.0] - 2025-12-23
+
 
 ### 🎉 Initial Release
 

@@ -11,11 +11,51 @@ Drag and drop functions across files. Automatic imports. Multi-file refactoring 
 [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue?style=flat-square&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=ByQaisar.structura-code-reorder&ssr=false#overview)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)](https://github.com/byqaisar1/structura-vscode/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://github.com/byqaisar1/structura-vscode/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.0-orange?style=flat-square)](https://github.com/byqaisar1/structura-vscode/blob/main/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.1.0-orange?style=flat-square)](https://github.com/byqaisar1/structura-vscode/blob/main/CHANGELOG.md)
 
 </div>
 
 ---
+
+## 🚀 What's New in v1.1.0
+
+### 🎯 New Features
+
+- **🎯 Context Menu Support** - Right-click on any function for quick actions
+- **🔗 Multi-Select** - Select and move multiple functions at once
+- **⚡ Performance Boost** - Up to 70% faster symbol loading
+- **🔄 Enhanced Drag & Drop** - Smoother cross-file operations
+
+### ✨ Enhanced Features
+
+- **Better TypeScript/JavaScript Support**
+- **Improved Error Handling**
+- **More Reliable Symbol Detection**
+- **Faster Refresh Times**
+
+### 🐛 Bug Fixes
+
+- Fixed import path resolution
+- Fixed symbol duplication issues
+- Improved error messages
+- Better handling of large files
+
+---
+
+## ✨ Features
+
+### Core Capabilities
+
+- **🎨 Visual Code Organization** - See all files and functions in an elegant tree view
+- **🔄 Same-File Reordering** - Reorganize functions within a single file
+- **🌐 Cross-File Movement** - Move functions between different files seamlessly
+- **📥 Automatic Imports** - Target file automatically imports moved functions
+- **📤 Automatic Exports** - Source file automatically adds exports
+- **🌍 Universal Language Support** - Works with TypeScript, JavaScript, Python, Java, C#, and 10+ languages
+- **🚀 Zero Configuration** - Install and use immediately
+- **💾 Safe Refactoring** - Full undo/redo support with Ctrl+Z
+- **📦 Offline First** - No external dependencies or API calls
+
 
 ## 🚀 What's New in v1.0.0
 
@@ -353,3 +393,4 @@ If Structura saved you time:
 [Report Bug](https://github.com/byqaisar1/structura-vscode/issues) · [Request Feature](https://github.com/byqaisar1/structura-vscode/issues) · [View Changelog](https://github.com/byqaisar1/structura-vscode/blob/main/CHANGELOG.md)
 
 </div>
+

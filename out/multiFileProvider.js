@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MultiFileProvider = exports.MultiFileItem = void 0;
 const vscode = require("vscode");
 const codeMover_1 = require("./codeMover");
+const symbolCache_1 = require("./symbolCache");
 /**
  * Enhanced TreeItem that can represent both files and symbols
  */
@@ -59,6 +60,7 @@ class MultiFileProvider {
         this.dropMimeTypes = ['application/vnd.code.tree.multifileitem'];
         this.trackedDocuments = new Map();
         this.codeMover = new codeMover_1.CodeMover();
+        this.symbolCache = symbolCache_1.SymbolCache.getInstance();
         this.initializeTracking();
     }
     initializeTracking() {
@@ -97,6 +99,27 @@ class MultiFileProvider {
             if (!element) {
                 // Root level: show all tracked files
                 const fileItems = [];
+                // Check cache first for each document
+                for (const doc of this.trackedDocuments.values()) {
+                    const cachedSymbols = this.symbolCache.get(doc.uri, doc.version);
+                    if (cachedSymbols) {
+                        // Use cached symbols if available
+                        const symbolItems = cachedSymbols.map(symbol => new MultiFileItem(symbol.name, vscode.TreeItemCollapsibleState.None, 'symbol', doc, symbol));
+                        if (symbolItems.length > 0) {
+                            fileItems.push(new MultiFileItem(doc.fileName.split('/').pop() || 'Untitled', vscode.TreeItemCollapsibleState.Collapsed, 'file', doc, undefined, symbolItems));
+                        }
+                    }
+                    else {
+                        // Otherwise, parse the document
+                        const symbols = yield vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', doc.uri);
+                        if (symbols && symbols.length > 0) {
+                            // Cache the parsed symbols
+                            this.symbolCache.set(doc.uri, doc.version, symbols);
+                            const symbolItems = symbols.map(symbol => new MultiFileItem(symbol.name, vscode.TreeItemCollapsibleState.None, 'symbol', doc, symbol));
+                            fileItems.push(new MultiFileItem(doc.fileName.split('/').pop() || 'Untitled', vscode.TreeItemCollapsibleState.Collapsed, 'file', doc, undefined, symbolItems));
+                        }
+                    }
+                }
                 for (const [path, doc] of this.trackedDocuments) {
                     const fileName = path.split(/[\\/]/).pop() || path;
                     fileItems.push(new MultiFileItem(fileName, vscode.TreeItemCollapsibleState.Collapsed, 'file', doc, undefined, []));
@@ -126,11 +149,13 @@ class MultiFileProvider {
     }
     // Drag and Drop Implementation
     handleDrag(source, dataTransfer, token) {
-        if (source.length === 0 || source[0].itemType !== 'symbol') {
-            return;
-        }
-        const item = source[0];
-        dataTransfer.set('application/vnd.code.tree.multifileitem', new vscode.DataTransferItem(item));
+        return __awaiter(this, void 0, void 0, function* () {
+            // Handle both single and multi-item drag
+            if (source && source.length > 0) {
+                dataTransfer.set('application/vnd.code.tree.multifileitem', new vscode.DataTransferItem(source));
+            }
+            return Promise.resolve();
+        });
     }
     handleDrop(target, dataTransfer, token) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -138,8 +163,10 @@ class MultiFileProvider {
             if (!transferItem) {
                 return;
             }
-            const sourceItem = transferItem.value;
-            if (!sourceItem.symbol || !sourceItem.document) {
+            const sourceItems = Array.isArray(transferItem.value)
+                ? transferItem.value
+                : [transferItem.value];
+            if (sourceItems.length === 0) {
                 return;
             }
             // Determine target document and position
@@ -169,15 +196,27 @@ class MultiFileProvider {
                 vscode.window.showWarningMessage('Invalid drop target');
                 return;
             }
-            // Check if same file
-            const isSameFile = sourceItem.document.uri.fsPath === targetDocument.uri.fsPath;
-            if (isSameFile) {
-                // Same file: use simple move logic
-                yield this.moveSameFile(sourceItem, targetPosition);
+            if (!targetDocument || !targetPosition) {
+                vscode.window.showWarningMessage('Could not determine drop target');
+                return;
             }
-            else {
-                // Different file: use CodeMover for cross-file operation
-                yield this.moveCrossFile(sourceItem, targetDocument, targetPosition);
+            // Process each source item
+            for (const sourceItem of sourceItems) {
+                if (!sourceItem.document || !sourceItem.symbol) {
+                    continue;
+                }
+                const isSameFile = sourceItem.document.uri.fsPath === targetDocument.uri.fsPath;
+                if (isSameFile) {
+                    // Same file: use simple move logic
+                    yield this.moveSameFile(sourceItem, targetPosition);
+                }
+                else {
+                    // Different file: use CodeMover for cross-file operation
+                    yield this.moveCrossFile(sourceItem, targetDocument, targetPosition);
+                }
+                // Invalidate cache for affected files
+                this.symbolCache.invalidate(sourceItem.document.uri);
+                this.symbolCache.invalidate(targetDocument.uri);
             }
             this.refresh();
         });
