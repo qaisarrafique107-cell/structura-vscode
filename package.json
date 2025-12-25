@@ -2,7 +2,7 @@
   "name": "structura-code-reorder",
   "displayName": "Structura - Drag & Drop Code Refactor",
   "description": "Reorder functions and classes by dragging them in the sidebar",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "publisher": "ByQaisar",
   "engines": {
     "vscode": "^1.74.0"
@@ -20,7 +20,6 @@
     "onCommand:structura.moveDown",
     "onCommand:structura.moveToTop",
     "onCommand:structura.moveToBottom",
-    "onCommand:structura.moveToFile",
     "onCommand:structura.refresh"
   ],
   "main": "./out/extension.js",
@@ -48,6 +47,10 @@
         {
           "id": "structuraView",
           "name": "Structure"
+        },
+        {
+          "id": "structuraInsights",
+          "name": "Refactoring Insights"
         }
       ]
     },
@@ -88,14 +91,29 @@
         "icon": "$(arrow-down)"
       },
       {
-        "command": "structura.moveToFile",
-        "title": "Move to File...",
-        "icon": "$(file-move)"
-      },
-      {
         "command": "structura.refresh",
         "title": "Refresh",
         "icon": "$(refresh)"
+      },
+      {
+        "command": "structura.smartUndo",
+        "title": "Smart Undo",
+        "icon": "$(discard)"
+      },
+      {
+        "command": "structura.smartRedo",
+        "title": "Smart Redo",
+        "icon": "$(redo)"
+      },
+      {
+        "command": "structura.showUndoHistory",
+        "title": "Show Undo History",
+        "icon": "$(history)"
+      },
+      {
+        "command": "structura.analyzeWorkspace",
+        "title": "Analyze Workspace",
+        "icon": "$(search)"
       }
     ],
     "menus": {
@@ -103,6 +121,11 @@
         {
           "command": "structura.refresh",
           "when": "view == structuraView",
+          "group": "navigation"
+        },
+        {
+          "command": "structura.analyzeWorkspace",
+          "when": "view == structuraInsights",
           "group": "navigation"
         }
       ],
@@ -121,24 +144,35 @@
           "command": "structura.duplicateToFile",
           "when": "view == structuraView && viewItem == symbol",
           "group": "inline@3"
-        },
-        {
-          "command": "structura.moveUp",
-          "when": "view == structuraView",
-          "group": "inline@4"
-        },
-        {
-          "command": "structura.moveDown",
-          "when": "view == structuraView",
-          "group": "inline@5"
-        },
-        {
-          "command": "structura.moveToFile",
-          "when": "view == structuraView",
-          "group": "navigation"
         }
       ]
-    }
+    },
+    "keybindings": [
+      {
+        "command": "structura.moveUp",
+        "key": "ctrl+shift+up",
+        "mac": "cmd+shift+up",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "structura.moveDown",
+        "key": "ctrl+shift+down",
+        "mac": "cmd+shift+down",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "structura.moveToTop",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "structura.moveToBottom",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+shift+b",
+        "when": "editorTextFocus"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
